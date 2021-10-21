@@ -3,6 +3,7 @@ package eu.tutorials.composematerialdesignsamples
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -10,6 +11,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import eu.tutorials.composematerialdesignsamples.components.GmailDrawerMenu
 import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
 
@@ -34,6 +36,7 @@ fun GmailApp() {
      * We then call the drawer content and also pass the scaffoldState as a value to scaffold state
      * attribute
      * */
+    val scrollState = rememberScrollState()
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
@@ -42,7 +45,8 @@ fun GmailApp() {
         HomeAppBar(scaffoldState, coroutineScope)
     },
     drawerContent = {
-
+        //Todo 11: provide the scroll state value
+   GmailDrawerMenu(scrollState = scrollState)
     }){
     }
 }
