@@ -3,10 +3,17 @@ package eu.tutorials.composematerialdesignsamples
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 //Todo 6: create the option lists
+//Todo 13: Update list to contain divider and header
 val menuList = listOf<MenuDataItem>(
+    MenuDataItem(
+        isDivider = true
+    ),
     MenuDataItem(
         icon = Icons.Outlined.AllInbox,
         title = "All inboxes"
+    ),
+    MenuDataItem(
+        isDivider = true
     ),
     MenuDataItem(
         icon = Icons.Outlined.Inbox,
@@ -19,6 +26,10 @@ val menuList = listOf<MenuDataItem>(
     MenuDataItem(
         icon = Icons.Outlined.Tag,
         title = "Promotions",
+    ),
+    MenuDataItem(
+        isHeader = true,
+        title = "ALL LABELS"
     ),
     MenuDataItem(
         icon = Icons.Outlined.StarOutline,
@@ -53,6 +64,10 @@ val menuList = listOf<MenuDataItem>(
         title = "All Mail"
     ),
     MenuDataItem(
+        isHeader = true,
+        title = "GOOGLE APPS"
+    ),
+    MenuDataItem(
         icon = Icons.Outlined.CalendarToday,
         title = "Calendar"
     ),
@@ -60,6 +75,9 @@ val menuList = listOf<MenuDataItem>(
     MenuDataItem(
         icon = Icons.Outlined.Contacts,
         title = "Contacts"
+    ),
+    MenuDataItem(
+        isDivider = true
     ),
     MenuDataItem(
         icon = Icons.Outlined.Settings,

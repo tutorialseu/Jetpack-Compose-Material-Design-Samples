@@ -3,8 +3,8 @@ package eu.tutorials.composematerialdesignsamples.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +32,26 @@ fun GmailDrawerMenu(scrollState: ScrollState,dp: Dp = 20.dp) {
      )
      //Todo 9: call the menu list and loop through to add a template for each item
      menuList.forEach { item ->
-         MailDrawerItem(item = item)
+         /** Todo 15:
+          * We check the item and show divider or header when the value is true or
+          * we show mail drawer item instead
+           */
+         when{
+             item.isDivider ->{
+                 Divider(modifier = Modifier.padding(bottom = dp, top = dp))
+             }
+             item.isHeader ->{
+                 Text(text = item.title!!, fontWeight= FontWeight.Light,
+                         modifier = Modifier.padding(start = dp,bottom = dp,
+                         top=dp))
+
+             }
+             else ->{
+
+                 MailDrawerItem(item = item)
+             }
+         }
+
      }
  }
 
@@ -46,12 +65,16 @@ fun MailDrawerItem(item: MenuDataItem) {
             .height(50.dp)
             .padding(top = 16.dp)
     ) {
-        Image(
-            imageVector = item.icon!!,
-            contentDescription =item.title!!,
-            modifier = Modifier.weight(0.5f)
-        )
-        Text(text = item.title,modifier = Modifier.weight(2.0f))
+        //Todo 14: check that the items are not null before setting to the composable
+        if (item.icon != null && item.title != null) {
+            Image(
+                imageVector = item.icon,
+                contentDescription = item.title,
+                modifier = Modifier.weight(0.5f)
+            )
+
+            Text(text = item.title, modifier = Modifier.weight(2.0f))
+        }
     }
 
 }
