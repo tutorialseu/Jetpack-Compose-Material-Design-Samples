@@ -10,6 +10,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import eu.tutorials.composematerialdesignsamples.components.GmailDrawerMenu
 import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
 
@@ -41,7 +42,8 @@ fun GmailApp() {
     },
         //Todo 5: add drawer content with empty lambda
         drawerContent = {
-
+      //Todo 9:pass GmailDrawerMenu as the drawer content
+            GmailDrawerMenu()
     }){
     }
 }
