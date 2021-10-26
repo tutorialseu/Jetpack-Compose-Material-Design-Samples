@@ -13,6 +13,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import eu.tutorials.composematerialdesignsamples.components.GmailDrawerMenu
 import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
+import eu.tutorials.composematerialdesignsamples.components.HomeBottomMenu
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,24 +32,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GmailApp() {
-    /**Todo 4 create values for Scaffold state and coroutine scope
-     * pass the values into HomeAppBar
-     * */
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
-    //Todo 19: create value for scroll state
     val scrollState = rememberScrollState()
-    //Todo 6:add scaffold state to scaffold
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
         HomeAppBar(scaffoldState,coroutineScope)
     },
-        //Todo 5: add drawer content with empty lambda
         drawerContent = {
-      //Todo 9:pass GmailDrawerMenu as the drawer content
-            //Todo 20 pass the scrollstate value
             GmailDrawerMenu(scrollState = scrollState)
-    }){
+    },
+        //Todo 1 add a bottomBar with empty lambda
+        bottomBar = {
+            //Todo 3: call home bottom menu composable
+            HomeBottomMenu()
+        }){
     }
 }
 

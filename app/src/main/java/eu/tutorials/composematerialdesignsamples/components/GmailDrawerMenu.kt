@@ -13,15 +13,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import eu.tutorials.composematerialdesignsamples.DrawerMenuData
+import eu.tutorials.composematerialdesignsamples.model.DrawerMenuData
 
-
-//Todo 7: create a new file and create a compose function with a column composable
-//Todo 17: create a scroll state variable
 @Composable
 fun GmailDrawerMenu(dp: Dp = 8.dp,scrollState: ScrollState) {
-    //Todo 13 create a list of the menu items
-    //Todo 23: update list to contain divider and header
     val menuList = listOf(
         DrawerMenuData.Divider,
         DrawerMenuData.AllInboxes,
@@ -45,17 +40,13 @@ fun GmailDrawerMenu(dp: Dp = 8.dp,scrollState: ScrollState) {
         DrawerMenuData.Setting,
         DrawerMenuData.Help
     )
-//Todo 18: add a verticalScroll and pass the scroll state to it
         Column(Modifier.verticalScroll(scrollState)){
-        //Todo 8: Add a Text element for the Gmail title
         Text(
             text = "Gmail", color = Color.Red,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 20.dp, top = 20.dp))
-        //Todo 15: we loop though the list and add each item to the menu
         menuList.forEach{ item->
-            //Todo 24 check for what each it is and display the correct composable
             when{
                 item.isDivider ->{
                     Divider(modifier = Modifier.padding(bottom = dp, top = dp))
@@ -75,7 +66,6 @@ fun GmailDrawerMenu(dp: Dp = 8.dp,scrollState: ScrollState) {
     }
 }
 
-//Todo 14: create a ui template for each item
 @Composable
 fun MailDrawerItem(item: DrawerMenuData) {
     Row(
@@ -84,7 +74,6 @@ fun MailDrawerItem(item: DrawerMenuData) {
             .height(50.dp)
             .padding(top = 16.dp)
     ) {
-        //Todo 15: add weight to each item
         Image(
             imageVector = item.icon!!,
             contentDescription =item.title!!,

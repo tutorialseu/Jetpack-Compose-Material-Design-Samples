@@ -1,16 +1,13 @@
-package eu.tutorials.composematerialdesignsamples
+package eu.tutorials.composematerialdesignsamples.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.ui.graphics.vector.ImageVector
 
-//Todo 10 create a sealed class for each item on the menu
-//Todo 21: add fields for divider and header
 sealed class DrawerMenuData(
     val icon: ImageVector? = null, val title:String? = null,
     val isDivider:Boolean=false, val isHeader:Boolean = false
 ){
-    //Todo 12 We create an object for easy access to each of the item
     object AllInboxes: DrawerMenuData(
         icon = Icons.Outlined.AllInbox,
         title = "All inboxes"
@@ -76,7 +73,6 @@ sealed class DrawerMenuData(
         icon = Icons.Outlined.Help,
         title = "Help & FeedBack"
     )
-    //Todo 22 :Create object for divider and headers
     object Divider: DrawerMenuData(
         isDivider = true
     )

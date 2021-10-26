@@ -23,11 +23,6 @@ import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-/**
- *Todo 1: create a scaffold state variable in HomeAppBar paranthesis
- *Todo 2: Add onClick implementation for IconButton to open the drawer Menu
- * Todo 3: create a coroutine scope for the open method and move it into the scope
- */
 @Composable
 fun HomeAppBar(scaffoldState:ScaffoldState,scope: CoroutineScope) {
 Box(modifier = Modifier.padding(10.dp)) {
