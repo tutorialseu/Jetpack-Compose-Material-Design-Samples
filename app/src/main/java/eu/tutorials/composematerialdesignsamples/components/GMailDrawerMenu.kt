@@ -1,41 +1,55 @@
 package eu.tutorials.composematerialdesignsamples.components
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import eu.tutorials.composematerialdesignsamples.MenuDataItem
-import eu.tutorials.composematerialdesignsamples.menuList
+import eu.tutorials.composematerialdesignsamples.R
+import eu.tutorials.composematerialdesignsamples.model.DrawerMenuData
 
-//Todo 3: create a new file and create a compose function with a column composable
 @Composable
-fun GmailDrawerMenu(scrollState: ScrollState,dp: Dp = 20.dp) {
-    //Todo 10 add a vertical scroll to the column
+fun GmailDrawerMenu(scrollState: ScrollState,dp: Dp = 8.dp) {
+    val menuList = listOf(
+        DrawerMenuData.DividerOne,
+        DrawerMenuData.AllInboxes,
+        DrawerMenuData.DividerTwo,
+        DrawerMenuData.Primary,
+        DrawerMenuData.Social,
+        DrawerMenuData.Promotions,
+        DrawerMenuData.HeaderOne,
+        DrawerMenuData.Starred,
+        DrawerMenuData.Snoozed,
+        DrawerMenuData.Important,
+        DrawerMenuData.Sent,
+        DrawerMenuData.Schedule,
+        DrawerMenuData.Outbox,
+        DrawerMenuData.Draft,
+        DrawerMenuData.AllMail,
+        DrawerMenuData.HeaderTwo,
+        DrawerMenuData.Calendar,
+        DrawerMenuData.Contacts,
+        DrawerMenuData.DividerThree,
+        DrawerMenuData.Setting,
+        DrawerMenuData.Help
+    )
  Column(
      Modifier
          .verticalScroll(scrollState)) {
-     //Todo 4: Add a Text element for the Gmail title
      Text(
          text = "Gmail", color = Color.Red,
          fontSize = 20.sp,
          fontWeight = FontWeight.Bold,
-         modifier = Modifier.padding(start = dp, top = dp)
+         modifier = Modifier.padding(start = 20.dp, top = 20.dp)
      )
-     //Todo 9: call the menu list and loop through to add a template for each item
      menuList.forEach { item ->
-         /** Todo 15:
-          * We check the item and show divider or header when the value is true or
-          * we show mail drawer item instead
-           */
          when{
              item.isDivider ->{
                  Divider(modifier = Modifier.padding(bottom = dp, top = dp))
@@ -56,25 +70,24 @@ fun GmailDrawerMenu(scrollState: ScrollState,dp: Dp = 20.dp) {
  }
 
 }
-//Todo 7: create a ui template  for each item on the list
 @Composable
-fun MailDrawerItem(item: MenuDataItem) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .padding(top = 16.dp)
-    ) {
-        //Todo 14: check that the items are not null before setting to the composable
-        if (item.icon != null && item.title != null) {
-            Image(
-                imageVector = item.icon,
-                contentDescription = item.title,
-                modifier = Modifier.weight(0.5f)
-            )
+fun MailDrawerItem(item: DrawerMenuData) {
+   Box(modifier = Modifier
+        .fillMaxWidth()
+        .height(50.dp)) {
+        Row(modifier = Modifier
+            .padding(top = 8.dp)
+        ) {
+            if (item.icon != null && item.title != null) {
+                Image(
+                    imageVector = item.icon,
+                    contentDescription = item.title,
+                    modifier = Modifier.weight(0.5f)
+                )
 
-            Text(text = item.title, modifier = Modifier.weight(2.0f))
+                Text(text = item.title, modifier = Modifier.weight(2.0f))
+            }
         }
-    }
+}
 
 }
