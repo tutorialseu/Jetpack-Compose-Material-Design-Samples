@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
@@ -26,13 +28,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-//Todo 1: replace Greeting with GmailApp
-//Todo 2: replace Text with Scaffold
 fun GmailApp() {
-    //Todo 3:reference the topBar with an empty lambda
-    Scaffold(topBar = {
-        //Todo 7: call the HomeAppBar function
-        HomeAppBar()
+    /**Todo 4 create values for Scaffold state and coroutine scope
+     * pass the values into HomeAppBar
+     * */
+    val scaffoldState = rememberScaffoldState()
+    val coroutineScope = rememberCoroutineScope()
+    //Todo 6:add scaffold state to scaffold
+    Scaffold(scaffoldState = scaffoldState,
+        topBar = {
+        HomeAppBar(scaffoldState,coroutineScope)
+    },
+        //Todo 5: add drawer content with empty lambda
+        drawerContent = {
+
     }){
     }
 }
