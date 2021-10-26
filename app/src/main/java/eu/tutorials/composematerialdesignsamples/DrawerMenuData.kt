@@ -5,8 +5,10 @@ import androidx.compose.material.icons.outlined.*
 import androidx.compose.ui.graphics.vector.ImageVector
 
 //Todo 10 create a sealed class for each item on the menu
+//Todo 21: add fields for divider and header
 sealed class DrawerMenuData(
     val icon: ImageVector? = null, val title:String? = null,
+    val isDivider:Boolean=false, val isHeader:Boolean = false
 ){
     //Todo 12 We create an object for easy access to each of the item
     object AllInboxes: DrawerMenuData(
@@ -73,5 +75,17 @@ sealed class DrawerMenuData(
     object Help: DrawerMenuData(
         icon = Icons.Outlined.Help,
         title = "Help & FeedBack"
+    )
+    //Todo 22 :Create object for divider and headers
+    object Divider: DrawerMenuData(
+        isDivider = true
+    )
+    object HeaderOne: DrawerMenuData(
+        isHeader = true,
+        title = "ALL LABELS"
+    )
+    object HeaderTwo: DrawerMenuData(
+        isHeader = true,
+        title = "GOOGLE APPS"
     )
 }

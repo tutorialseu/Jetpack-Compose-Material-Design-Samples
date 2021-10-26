@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,13 +19,17 @@ import eu.tutorials.composematerialdesignsamples.DrawerMenuData
 //Todo 7: create a new file and create a compose function with a column composable
 //Todo 17: create a scroll state variable
 @Composable
-fun GmailDrawerMenu(dp: Dp = 20.dp,scrollState: ScrollState) {
+fun GmailDrawerMenu(dp: Dp = 8.dp,scrollState: ScrollState) {
     //Todo 13 create a list of the menu items
+    //Todo 23: update list to contain divider and header
     val menuList = listOf(
+        DrawerMenuData.Divider,
         DrawerMenuData.AllInboxes,
+        DrawerMenuData.Divider,
         DrawerMenuData.Primary,
         DrawerMenuData.Social,
         DrawerMenuData.Promotions,
+        DrawerMenuData.HeaderOne,
         DrawerMenuData.Starred,
         DrawerMenuData.Snoozed,
         DrawerMenuData.Important,
@@ -33,8 +38,10 @@ fun GmailDrawerMenu(dp: Dp = 20.dp,scrollState: ScrollState) {
         DrawerMenuData.Outbox,
         DrawerMenuData.Draft,
         DrawerMenuData.AllMail,
+        DrawerMenuData.HeaderTwo,
         DrawerMenuData.Calendar,
         DrawerMenuData.Contacts,
+        DrawerMenuData.Divider,
         DrawerMenuData.Setting,
         DrawerMenuData.Help
     )
@@ -45,10 +52,25 @@ fun GmailDrawerMenu(dp: Dp = 20.dp,scrollState: ScrollState) {
             text = "Gmail", color = Color.Red,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = dp, top = dp))
+            modifier = Modifier.padding(start = 20.dp, top = 20.dp))
         //Todo 15: we loop though the list and add each item to the menu
         menuList.forEach{ item->
-            MailDrawerItem(item = item)
+            //Todo 24 check for what each it is and display the correct composable
+            when{
+                item.isDivider ->{
+                    Divider(modifier = Modifier.padding(bottom = dp, top = dp))
+                }
+                item.isHeader ->{
+                    Text(text = item.title!!, fontWeight= FontWeight.Light,
+                        modifier = Modifier.padding(start = 20.dp,bottom = dp,
+                            top=dp))
+
+                }
+                else ->{
+
+                    MailDrawerItem(item = item)
+                }
+            }
         }
     }
 }
