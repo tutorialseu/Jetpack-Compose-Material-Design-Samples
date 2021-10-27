@@ -3,17 +3,16 @@ package eu.tutorials.composematerialdesignsamples
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import eu.tutorials.composematerialdesignsamples.components.GmailDrawerMenu
 import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
 import eu.tutorials.composematerialdesignsamples.components.HomeBottomMenu
+import eu.tutorials.composematerialdesignsamples.components.MailList
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,11 +41,20 @@ fun GmailApp() {
         drawerContent = {
             GmailDrawerMenu(scrollState = scrollState)
     },
-        //Todo 1 add a bottomBar with empty lambda
         bottomBar = {
-            //Todo 3: call home bottom menu composable
             HomeBottomMenu()
         }){
+        /**Todo 1: add lazy column with items that accept count
+         * Then pass in a Text and a Divider
+         */
+//        LazyColumn{
+//            items(50){ index->
+//             Text(text = "Index @ $index")
+//                Divider()
+//            }
+//        }
+//Todo 16: add the padding value the scaffold emits to the mailList
+        MailList(it)
     }
 }
 

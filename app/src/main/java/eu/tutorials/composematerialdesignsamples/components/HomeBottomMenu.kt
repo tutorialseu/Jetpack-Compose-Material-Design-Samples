@@ -9,17 +9,14 @@ import androidx.compose.ui.res.colorResource
 import eu.tutorials.composematerialdesignsamples.R
 import eu.tutorials.composematerialdesignsamples.model.BottomMenuData
 
-//Todo 2: create a new file and a composable and call bottom navigation
 @Composable
 fun HomeBottomMenu() {
-    //Todo 6: create a list of the item
     val items = listOf(
         BottomMenuData.Mail,
         BottomMenuData.Meet
     )
     BottomNavigation(backgroundColor = colorResource(id = R.color.white),contentColor = colorResource(id = R.color.black))
     {
-        //Todo 7: Loop through the list and add each item to the BottomNavigation item
         items.forEach {
             BottomNavigationItem(
                 label = { Text(text = it.title)},
