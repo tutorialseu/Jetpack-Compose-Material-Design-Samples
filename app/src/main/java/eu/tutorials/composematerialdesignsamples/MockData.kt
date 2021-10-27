@@ -2,7 +2,6 @@ package eu.tutorials.composematerialdesignsamples
 
 import eu.tutorials.composematerialdesignsamples.model.MailData
 
-//Todo 12: create a new file Mock Data with a dummy mail list
 val mailList = listOf(
     MailData(
         mailId = 1,

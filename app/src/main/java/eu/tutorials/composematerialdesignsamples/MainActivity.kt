@@ -9,10 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
-import eu.tutorials.composematerialdesignsamples.components.GmailDrawerMenu
-import eu.tutorials.composematerialdesignsamples.components.HomeAppBar
-import eu.tutorials.composematerialdesignsamples.components.HomeBottomMenu
-import eu.tutorials.composematerialdesignsamples.components.MailList
+import eu.tutorials.composematerialdesignsamples.components.*
 import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignSamplesTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,18 +40,13 @@ fun GmailApp() {
     },
         bottomBar = {
             HomeBottomMenu()
+        },
+        //Todo 3: get the fab slot  and pass the GmailFab we created to it
+        floatingActionButton = {
+            //Todo 8: pass in the scrollstate value from the remember scroll state to GmailFab and MailList
+            GmailFab(scrollState)
         }){
-        /**Todo 1: add lazy column with items that accept count
-         * Then pass in a Text and a Divider
-         */
-//        LazyColumn{
-//            items(50){ index->
-//             Text(text = "Index @ $index")
-//                Divider()
-//            }
-//        }
-//Todo 16: add the padding value the scaffold emits to the mailList
-        MailList(it)
+        MailList(it,scrollState)
     }
 }
 
