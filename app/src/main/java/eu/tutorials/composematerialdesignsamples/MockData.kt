@@ -1,5 +1,7 @@
 package eu.tutorials.composematerialdesignsamples
 
+import androidx.compose.ui.res.painterResource
+import eu.tutorials.composematerialdesignsamples.model.Account
 import eu.tutorials.composematerialdesignsamples.model.MailData
 
 val mailList = listOf(
@@ -73,4 +75,10 @@ val mailList = listOf(
         body = "We have an opening that suits your profile kindly check it out and indicate your interest",
         timeStamp = "20:10"
     )
+)
+
+val accountList = listOf<Account>(
+    Account(icon =  R.drawable.tutorials,userName = "Tutorials Eu",email = "tutorials@eu.com",ureadMails = 99),
+            Account(userName = "Chris Morty",email = "chris@gmail.com",ureadMails =80),
+                    Account(userName = "Christy Jane",email = "jane@gmail.com",ureadMails = 99)
 )

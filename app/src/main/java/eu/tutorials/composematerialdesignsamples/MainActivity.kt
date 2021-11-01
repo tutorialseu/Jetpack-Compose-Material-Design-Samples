@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import eu.tutorials.composematerialdesignsamples.components.*
@@ -31,9 +33,12 @@ fun GmailApp() {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+    val openDialog = remember {
+        mutableStateOf(false)
+    }
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
-        HomeAppBar(scaffoldState,coroutineScope)
+        HomeAppBar(scaffoldState,coroutineScope,openDialog)
     },
         drawerContent = {
             GmailDrawerMenu(scrollState = scrollState)
@@ -41,10 +46,8 @@ fun GmailApp() {
         bottomBar = {
             HomeBottomMenu()
         },
-        //Todo 3: get the fab slot  and pass the GmailFab we created to it
-        floatingActionButton = {
-            //Todo 8: pass in the scrollstate value from the remember scroll state to GmailFab and MailList
-            GmailFab(scrollState)
+       floatingActionButton = {
+           GmailFab(scrollState)
         }){
         MailList(it,scrollState)
     }
