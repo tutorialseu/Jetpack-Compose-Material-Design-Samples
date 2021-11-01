@@ -41,9 +41,7 @@ fun GmailApp() {
         bottomBar = {
             HomeBottomMenu()
         },
-        //Todo 3: get the fab slot  and pass the GmailFab we created to it
         floatingActionButton = {
-            //Todo 8: pass in the scrollstate value from the remember scroll state to GmailFab and MailList
             GmailFab(scrollState)
         }){
         MailList(it,scrollState)

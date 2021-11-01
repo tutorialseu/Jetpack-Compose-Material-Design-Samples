@@ -25,12 +25,10 @@ import androidx.compose.ui.unit.sp
 import eu.tutorials.composematerialdesignsamples.mailList
 import eu.tutorials.composematerialdesignsamples.model.MailData
 
-//Todo 6: create a scroll state variable
 @Composable
 fun MailList(paddingValues: PaddingValues,scrollState: ScrollState) {
 
     Box(modifier = Modifier.padding(paddingValues)) {
-        //Todo 7: Add a scrollable to the lazy column with the scrollstate value and vertical orientation
      LazyColumn(modifier = Modifier
          .fillMaxSize()
          .padding(16.dp).scrollable(scrollState,Orientation.Vertical)){

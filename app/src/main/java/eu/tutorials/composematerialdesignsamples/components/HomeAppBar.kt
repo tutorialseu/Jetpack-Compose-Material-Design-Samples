@@ -2,6 +2,7 @@ package eu.tutorials.composematerialdesignsamples.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -47,7 +48,10 @@ Box(modifier = Modifier.padding(10.dp)) {
                 painter = painterResource(id = R.drawable.tutorials),
                 contentDescription = "Profile",
             modifier = Modifier.size(30.dp).clip(CircleShape)
-                .background(color = Color.Gray))
+                    //Todo 1: add clickable to the image Modifier
+                .background(color = Color.Gray).clickable {
+
+                })
         }
     }
 }
