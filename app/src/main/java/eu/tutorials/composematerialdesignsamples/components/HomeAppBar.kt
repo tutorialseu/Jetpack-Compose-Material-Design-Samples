@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,14 +25,17 @@ import eu.tutorials.composematerialdesignsamples.ui.theme.ComposeMaterialDesignS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+//Todo 3 create an observable boolean variable
 @Composable
-fun HomeAppBar(scaffoldState:ScaffoldState,scope: CoroutineScope) {
+fun HomeAppBar(scaffoldState:ScaffoldState,scope: CoroutineScope,openDialog: MutableState<Boolean>) {
 Box(modifier = Modifier.padding(10.dp)) {
     Card(modifier = Modifier.requiredHeight(50.dp),
         shape = RoundedCornerShape(10.dp),elevation = 6.dp) {
 
         Row( verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxSize().padding(8.dp)) {
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)) {
 
             IconButton(onClick = {
                 scope.launch{
@@ -47,11 +51,20 @@ Box(modifier = Modifier.padding(10.dp)) {
             Image(
                 painter = painterResource(id = R.drawable.tutorials),
                 contentDescription = "Profile",
-            modifier = Modifier.size(30.dp).clip(CircleShape)
-                    //Todo 1: add clickable to the image Modifier
-                .background(color = Color.Gray).clickable {
-
+            modifier = Modifier
+                .size(30.dp)
+                .clip(CircleShape)
+                //Todo 1: add clickable to the image Modifier
+                .background(color = Color.Gray)
+                .clickable {
+                    //Todo 4: set openDialog value to true
+                    openDialog.value = true
                 })
+            //Todo 5: If openDialog is true then show the AccountsDialog
+            if (openDialog.value){
+                //Todo 9: pass openDialog into AccountsDialog
+                AccountsDialog(openDialog)
+            }
         }
     }
 }
