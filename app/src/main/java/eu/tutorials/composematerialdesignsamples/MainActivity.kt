@@ -33,13 +33,12 @@ fun GmailApp() {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
-    //Todo 6: create a remember value for openDialog
     val openDialog = remember {
         mutableStateOf(false)
     }
+
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
-            //Todo 7:add openDialog as an argument to homeAppBar
         HomeAppBar(scaffoldState,coroutineScope,openDialog)
     },
         drawerContent = {
