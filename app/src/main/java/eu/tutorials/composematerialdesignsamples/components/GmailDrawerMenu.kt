@@ -84,7 +84,7 @@ fun MailDrawerItem(item: DrawerMenuData) {
             .height(50.dp)
             .padding(top = 16.dp)
     ) {
-        //Todo 15: add weight to each item
+        //Todo 16: add weight to each item
         Image(
             imageVector = item.icon!!,
             contentDescription =item.title!!,
